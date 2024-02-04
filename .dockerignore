@@ -1,0 +1,9 @@
+#**/node_modules
+#**/.vscode
+#feed_sample*.*
+
+*
+!/dist
+!/public
+!/package.json
+!/package-lock.json

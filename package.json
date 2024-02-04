@@ -1,0 +1,43 @@
+{
+  "name": "auvio-podcasts-node",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "ts:check": "tsc --noEmit",
+    "dev": "tsx watch --clear-screen=false src/index.ts",
+    "build": "rimraf dist && tsc && tsc-alias",
+    "start": "node dist/index.js",
+    "format": "prettier --write 'src/**/*.{ts,js,json}' 'tests/**/*.{ts,js,json}'",
+    "x-docker:build": "docker-compose build --no-cache",
+    "x-docker:start": "docker-compose up",
+    "x-docker:stop": "docker-compose down",
+    "docker:build": "npm run build && docker build . -t guillaume86/auvio-podcasts",
+    "docker:start": "npm run docker:build && docker run --init --rm -p 3000:3000 --name auvio-podcasts guillaume86/auvio-podcasts",
+    "docker:push": "npm run docker:build && docker push guillaume86/auvio-podcasts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "fast-xml-parser": "^4.3.4",
+    "pino-http": "^9.0.0",
+    "pino-pretty": "^10.3.1",
+    "puppeteer": "^21.10.0",
+    "slug": "^8.2.3"
+  },
+  "devDependencies": {
+    "@tsconfig/node21": "^21.0.1",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.14",
+    "@types/pino-http": "^5.8.4",
+    "@types/slug": "^5.0.7",
+    "prettier": "^3.2.4",
+    "rimraf": "^5.0.5",
+    "tsc-alias": "^1.8.8",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
