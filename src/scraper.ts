@@ -115,8 +115,8 @@ export async function doScrapeUrl(
       // https://bff-service.rtbf.be/auvio/v1.21/widgets/18800?context%5BprogramId%5D=
       if (
         res.url().startsWith(
-          "https://bff-service.rtbf.be/auvio/v1.21/widgets/18800?context%5BprogramId%5D=",
-        )
+          "https://bff-service.rtbf.be/auvio/v",
+        ) && res.url().includes("/widgets/18800?context%5BprogramId%5D=")
       ) {
         logger.debug("Intercepted episodes data: " + res.url());
         res.json().then((json) => {
